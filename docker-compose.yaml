@@ -5,11 +5,12 @@ services:
     image: astrobot:latest
     ports:
       - 8000:80
-      - 443:443
+      - 449:443
     restart: always
     volumes:
-      - ./nginx/conf/:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/conf/:/etc/nginx/conf.d/:ro
       - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/letsencrypt/:ro
   certbot:
     image: certbot/certbot:latest
     volumes:
